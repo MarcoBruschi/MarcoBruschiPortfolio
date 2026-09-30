@@ -302,7 +302,7 @@ export default function Portfolio() {
                     {cat.items.map((item, itemIdx) => (
                       <li key={itemIdx} className="flex flex-col gap-0.5">
                         <span className="text-sm text-white font-medium">
-                          {item.name}
+                          {typeof item.name === 'string' ? item.name : item.name[lang]}
                         </span>
                         {item.description && (
                           <span className="text-xs text-muted font-mono">

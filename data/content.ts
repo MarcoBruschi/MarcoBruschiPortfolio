@@ -12,13 +12,15 @@ export interface Project {
   highlights: { pt: string[]; en: string[] };
 }
 
+export interface SkillItem {
+  name: string | { pt: string; en: string };
+  description?: { pt: string; en: string };
+  highlight?: boolean;
+}
+
 export interface SkillCategory {
   category: { pt: string; en: string };
-  items: {
-    name: string;
-    description?: { pt: string; en: string };
-    highlight?: boolean; // high relevance for IT market
-  }[];
+  items: SkillItem[];
 }
 
 export const skillsData: SkillCategory[] = [
@@ -31,11 +33,29 @@ export const skillsData: SkillCategory[] = [
       { name: 'Node.js', highlight: true },
       { name: 'Express.js', highlight: true },
       { name: 'RESTful APIs', highlight: true },
-      { name: 'Arquitetura MVC', description: { pt: 'Separação clara de responsabilidades', en: 'Clear separation of concerns' }, highlight: true },
-      { name: 'Autenticação JWT', description: { pt: 'Tokens stateless para segurança escalável', en: 'Stateless tokens for scalable security' }, highlight: true },
-      { name: 'Bcrypt', description: { pt: 'Hashing seguro de credenciais', en: 'Secure credential hashing' }, highlight: true },
-      { name: 'POO (Programação Orientada a Objetos)', highlight: true },
-      { name: 'Promises & Async/Await', highlight: true },
+      { 
+        name: { pt: 'Arquitetura MVC', en: 'MVC Architecture' }, 
+        description: { pt: 'Separação clara de responsabilidades', en: 'Clear separation of concerns' }, 
+        highlight: true 
+      },
+      { 
+        name: { pt: 'Autenticação JWT', en: 'JWT Authentication' }, 
+        description: { pt: 'Tokens stateless para segurança escalável', en: 'Stateless tokens for scalable security' }, 
+        highlight: true 
+      },
+      { 
+        name: 'Bcrypt', 
+        description: { pt: 'Hashing seguro de credenciais', en: 'Secure credential hashing' }, 
+        highlight: true 
+      },
+      { 
+        name: { pt: 'POO (Programação Orientada a Objetos)', en: 'OOP (Object-Oriented Programming)' }, 
+        highlight: true 
+      },
+      { 
+        name: { pt: 'Promises & Async/Await', en: 'Promises & Async/Await' }, 
+        highlight: true 
+      },
     ],
   },
   {
@@ -45,11 +65,11 @@ export const skillsData: SkillCategory[] = [
     },
     items: [
       { name: 'JavaScript (ES6+)', highlight: true },
-      { name: 'Java', highlight: true },
       { name: 'TypeScript', description: { pt: 'Tipagem estática e segurança em escala', en: 'Static typing and scale safety' }, highlight: true },
       { name: 'Python', description: { pt: 'Automação, POO e IA', en: 'Automation, OOP & AI' }, highlight: true },
+      { name: 'Java', highlight: true },
       { name: 'C#', description: { pt: '.NET e POO robusta', en: '.NET and robust OOP' } },
-      { name: 'PHP', description: { pt: 'Aplicações web e legados dinâmicos', en: 'Web applications and dynamic backend' } },
+      { name: 'PHP', description: { pt: 'Aplicações web e serviços dinâmicos', en: 'Web applications and dynamic services' } },
       { name: 'HTML5 & CSS3', highlight: true },
     ],
   },
@@ -59,10 +79,26 @@ export const skillsData: SkillCategory[] = [
       en: 'Artificial Intelligence & Modern Practices',
     },
     items: [
-      { name: 'Integração com LLMs / IA Generativa', description: { pt: 'Gemini Flash Vision, OpenAI e agentes', en: 'Gemini Flash Vision, OpenAI and agents' }, highlight: true },
-      { name: 'PDF Parsing & Higienização', description: { pt: 'Extração e estruturação de documentos', en: 'Document extraction and sanitization' }, highlight: true },
-      { name: 'Git & GitHub', description: { pt: 'Controle de versão, branches e PRs', en: 'Version control, branches and PRs' }, highlight: true },
-      { name: 'Clean Code & Boas Práticas', description: { pt: 'Código legível, modular e de fácil manutenção', en: 'Maintainable, modular and readable code' }, highlight: true },
+      { 
+        name: { pt: 'Integração com LLMs / IA Generativa', en: 'LLM Integration & Generative AI' }, 
+        description: { pt: 'Gemini Flash Vision, OpenAI e agentes', en: 'Gemini Flash Vision, OpenAI and agents' }, 
+        highlight: true 
+      },
+      { 
+        name: { pt: 'PDF Parsing & Higienização', en: 'PDF Parsing & Sanitization' }, 
+        description: { pt: 'Extração e estruturação de documentos', en: 'Document extraction and sanitization' }, 
+        highlight: true 
+      },
+      { 
+        name: 'Git & GitHub', 
+        description: { pt: 'Controle de versão, branches e PRs', en: 'Version control, branches and PRs' }, 
+        highlight: true 
+      },
+      { 
+        name: { pt: 'Clean Code & Boas Práticas', en: 'Clean Code & Best Practices' }, 
+        description: { pt: 'Código legível, modular e de fácil manutenção', en: 'Maintainable, modular and readable code' }, 
+        highlight: true 
+      },
     ],
   },
   {
@@ -71,8 +107,16 @@ export const skillsData: SkillCategory[] = [
       en: 'Databases & Persistence',
     },
     items: [
-      { name: 'MySQL (Relacional)', description: { pt: 'Modelagem, transações e queries parametrizadas', en: 'Modeling, transactions and parameterized queries' }, highlight: true },
-      { name: 'MongoDB (NoSQL)', description: { pt: 'Documentos dinâmicos e Mongoose ORM', en: 'Dynamic documents and Mongoose ORM' }, highlight: true },
+      { 
+        name: { pt: 'MySQL (Relacional)', en: 'MySQL (Relational)' }, 
+        description: { pt: 'Modelagem, transações e queries parametrizadas', en: 'Modeling, transactions and parameterized queries' }, 
+        highlight: true 
+      },
+      { 
+        name: { pt: 'MongoDB (NoSQL)', en: 'MongoDB (NoSQL)' }, 
+        description: { pt: 'Documentos dinâmicos e Mongoose ORM', en: 'Dynamic documents and Mongoose ORM' }, 
+        highlight: true 
+      },
     ],
   },
   {
@@ -81,10 +125,24 @@ export const skillsData: SkillCategory[] = [
       en: 'Front-end & User Interfaces',
     },
     items: [
-      { name: 'React.js & JSX', description: { pt: 'Componentes reativos e estado gerenciado', en: 'Reactive components and managed state' }, highlight: true },
-      { name: 'Consumo Assíncrono de APIs', description: { pt: 'Fetch, Axios e tratamento de respostas', en: 'Fetch, Axios and response handling' }, highlight: true },
-      { name: 'UI Responsiva & Flexbox/Grid', highlight: true },
-      { name: 'Bootstrap 5 & Tailwind CSS', highlight: true },
+      { 
+        name: 'React.js & JSX', 
+        description: { pt: 'Componentes reativos e estado gerenciado', en: 'Reactive components and managed state' }, 
+        highlight: true 
+      },
+      { 
+        name: { pt: 'Consumo Assíncrono de APIs', en: 'Asynchronous API Consumption' }, 
+        description: { pt: 'Fetch, Axios e tratamento de respostas', en: 'Fetch, Axios and response handling' }, 
+        highlight: true 
+      },
+      { 
+        name: { pt: 'UI Responsiva & Flexbox/Grid', en: 'Responsive UI & Flexbox/Grid' }, 
+        highlight: true 
+      },
+      { 
+        name: 'Bootstrap 5 & Tailwind CSS', 
+        highlight: true 
+      },
     ],
   },
 ];
@@ -97,8 +155,8 @@ export const projectsData: Project[] = [
       en: '3D Spatial Architecture Transformer with Multimodal Reasoning',
     },
     role: {
-      pt: 'Desenvolvedor Full-Stack',
-      en: 'Full-Stack Developer',
+      pt: 'Desenvolvedor Full Stack',
+      en: 'Full Stack Developer',
     },
     year: '2026',
     tech: ['TypeScript', 'Gemini 2.5 Flash Vision', 'Three.js', 'WebGL', 'Next.js', 'React.js', 'Prisma', 'PostgreSQL', 'Redis'],
@@ -110,8 +168,8 @@ export const projectsData: Project[] = [
     },
     highlights: {
       pt: [
-        'Interpretação visual de arquiteturas através do Google Gemini 2.5 Flash Vision',
-        'Renderização cinemática com Three.js/WebGL2 com alta taxa de quadros',
+        'Interpretação visual de arquiteturas com Google Gemini 2.5 Flash Vision',
+        'Renderização cinemática em Three.js/WebGL2 a 60 FPS',
         'Mapeamento de topologias de microsserviços em malhas volumétricas',
       ],
       en: [
@@ -128,7 +186,7 @@ export const projectsData: Project[] = [
       en: 'AI-Powered Contract Compliance & Legal Risk Auditing',
     },
     role: {
-      pt: 'Desenvolvedor Full-Stack',
+      pt: 'Desenvolvedor Full Stack',
       en: 'Full Stack Developer',
     },
     year: '2026',
@@ -190,8 +248,8 @@ export const projectsData: Project[] = [
       en: 'Automation Orchestration & Bot Service',
     },
     role: {
-      pt: 'Desenvolvedor Full-Stack',
-      en: 'Full-Stack Developer',
+      pt: 'Desenvolvedor Back-end',
+      en: 'Back-end Developer',
     },
     year: '2025',
     tech: ['JavaScript', 'Node.js', 'APIs Assíncronas', 'Event-Driven'],
@@ -219,8 +277,8 @@ export const projectsData: Project[] = [
       en: 'Secure RESTful CRUD API with Parameterized Queries & MySQL',
     },
     role: {
-      pt: 'Desenvolvedor Full-Stack',
-      en: 'Full-Stack Developer',
+      pt: 'Desenvolvedor Back-end',
+      en: 'Back-end Developer',
     },
     year: '2025',
     tech: ['Node.js', 'Express.js', 'MySQL'],
@@ -247,8 +305,8 @@ export const siteContent = {
   pt: {
     nav: {
       specs: 'Competências',
-      deployments: 'Projetos de Destaque',
-      academic: 'Formação & Certificações',
+      deployments: 'Projetos',
+      academic: 'Formação',
       contact: 'Contato',
     },
     hero: {
@@ -259,7 +317,7 @@ export const siteContent = {
         'Construo arquiteturas back-end resilientes, APIs RESTful seguras e plataformas com integração avançada de Inteligência Artificial. Foco rigoroso em Clean Code, modelagem relacional/NoSQL e padrões arquiteturais.',
       ctaPrimary: 'Iniciar Contato',
       ctaSecondary: 'Ver Projetos ↓',
-      githubStatus: 'GitHub Pro • 19 anos',
+      githubStatus: 'GitHub Pro • 18 anos',
     },
     specs: {
       tag: '01 // COMPETÊNCIAS TÉCNICAS',
@@ -280,7 +338,7 @@ export const siteContent = {
         degree: 'Bacharelado em Engenharia de Software',
         period: '4º Período • 2025 – 2028 (Previsão: Dez/2028)',
         disciplines:
-          'Disciplinas chave: Programação Orientada a Objetos, Design de Software, Desenvolvimento Web, Arquitetura de Banco de Dados, Segurança da Informação, Qualidade de Software, Engenharia de Requisitos.',
+          'Disciplinas-chave: Programação Orientada a Objetos, Design de Software, Desenvolvimento Web, Arquitetura de Banco de Dados, Segurança da Informação, Qualidade de Software, Engenharia de Requisitos.',
       },
       certifications: {
         title: 'Certificações Alura (230h+ Comprovadas)',
@@ -314,8 +372,8 @@ export const siteContent = {
   en: {
     nav: {
       specs: 'Skills',
-      deployments: 'Key Projects',
-      academic: 'Education & Certifications',
+      deployments: 'Projects',
+      academic: 'Education',
       contact: 'Contact',
     },
     hero: {
@@ -326,7 +384,7 @@ export const siteContent = {
         'Building resilient back-end architectures, secure RESTful APIs, and cutting-edge platforms with Artificial Intelligence integration. Grounded in Clean Code, relational/NoSQL modeling, and architectural patterns.',
       ctaPrimary: 'Initiate Contact',
       ctaSecondary: 'View Projects ↓',
-      githubStatus: 'GitHub Pro • 19 years old',
+      githubStatus: 'GitHub Pro • 18 years old',
     },
     specs: {
       tag: '01 // TECHNICAL SKILLS',
